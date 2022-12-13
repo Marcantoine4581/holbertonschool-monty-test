@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- * push - pushes an element to the stack
+ * _push - pushes an element to the stack
  * @stack: pointer to the head of the stack
  * @line_number: number of line
  *
@@ -30,16 +30,22 @@ void _push(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * push - pushes an element to the stack
+ * _pall - pushes an element to the stack
  * @stack: pointer to the head of the stack
  * @line_number: number of line
  *
  * Return: void
  */
 
-void pall(stack_t **stack, unsigned int line_number)
+void _pall(stack_t **stack, unsigned int line_number)
 {
-	stack_t *node = NULL;
+	stack_t *temp;
+	(void)line_number;
 
-
+	temp = *stack;
+	while (temp)
+	{
+		printf("%d\n", temp->n);
+		temp = temp->next;
+	}
 }

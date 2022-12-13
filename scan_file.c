@@ -11,9 +11,13 @@ void scan_file(FILE *file)
 	while (getline(&buffer, &n, file) != -1)
 	{
 		line_number++;
+		//printf("number = %i\n", line_number);
+		//printf("buffer = %s\n", buffer);
 		op = strtok(buffer, delimiter);
+		//printf("op = %s\n", op);
 		get_op_func(op, &stack, line_number);
 	}
+	free(buffer);
 	exit(EXIT_SUCCESS);
 
 }

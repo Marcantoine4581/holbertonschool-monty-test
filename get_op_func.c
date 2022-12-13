@@ -10,21 +10,24 @@ void get_op_func(char *op, stack_t **stack, unsigned int line_number)
 	instruction_t code_list[] = {
 		{"push", _push},
 		{"pall", _pall},
-		{"pint", _pint},
-		{"pop", _pop},
-		{"swap", _swap},
-		{"add", _add},
-		{"nop", _nop},
+		//{"pint", _pint},
+		//{"pop", _pop},
+		//{"swap", _swap},
+		//{"add", _add},
+		//{"nop", _nop},
 		{NULL, NULL}
 	};
 
 	while (code_list[i].opcode)
 	{
+		printf("code_list[i].opcode = %s\n", code_list[i].opcode);
 		if (code_list[i].opcode[0] == (*op))
 		{
-			code_list[i].f(stack, line_number);
+			printf("trouvé\n");
+			//code_list[i].f(stack, line_number);
 			return;
 		}
 		i++;
+		printf("i = %i\n", i);
 	}
 }

@@ -18,16 +18,16 @@ void get_op_func(char *op, stack_t **stack, unsigned int line_number)
 		{NULL, NULL}
 	};
 
-	while (code_list[i].opcode)
+	while (code_list[i].opcode != NULL)
 	{
-		printf("code_list[i].opcode = %s\n", code_list[i].opcode);
-		if (code_list[i].opcode[0] == (*op))
+		//printf("code_list[i].opcode = %s\n", code_list[i].opcode);
+		if (strcmp(code_list[i].opcode, op) == 0)
 		{
-			printf("trouvé\n");
-			//code_list[i].f(stack, line_number);
+			code_list[i].f(stack, line_number);
 			return;
 		}
 		i++;
-		printf("i = %i\n", i);
 	}
+	fprintf(stderr, "L%u: unknown instruction %s\n", line_number, op);
+	exit(EXIT_FAILURE);
 }

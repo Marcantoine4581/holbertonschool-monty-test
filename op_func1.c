@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- * _push - pushes an element to the stack
+ * _push - pushe an element to the stack
  * @stack: pointer to the head of the stack
  * @line_number: number of line
  *
@@ -11,7 +11,17 @@
 void _push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new;
+	char *line;
+	int i;
 
+	while (i = 0; line[i] != '\0'; i++)
+	{
+		if (isdigit(line[i]) == 0)
+		{
+			fprintf(stderr, "L%d: usage: push integer", line_number);
+			exit(EXIT_FAILURE);
+		}
+	}
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
 	{
@@ -19,7 +29,7 @@ void _push(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
-	new->n = n;
+	new->n = atoi(line);
 	new->next = NULL;
 	new->prev = *stack;
 
@@ -30,7 +40,7 @@ void _push(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * _pall - pushes an element to the stack
+ * _pall - print all the values on the stack
  * @stack: pointer to the head of the stack
  * @line_number: number of line
  *
@@ -49,3 +59,4 @@ void _pall(stack_t **stack, unsigned int line_number)
 		temp = temp->next;
 	}
 }
+
